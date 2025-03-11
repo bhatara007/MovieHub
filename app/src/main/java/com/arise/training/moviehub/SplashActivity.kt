@@ -8,15 +8,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import com.arise.training.moviehub.databinding.ActivitySplashBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class SplashActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySplashBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_splash)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -26,37 +32,37 @@ class SplashActivity : AppCompatActivity() {
             goToMainActivity()
 //            finish()
         }
-        Log.d("testapp splash", "onCreate")
+        Timber.d("onCreate")
     }
 
     override fun onStart() {
         super.onStart()
-        Log.d("testapp splash", "onStart")
+        Timber.d("onStart")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d("testapp splash", "onResume")
+        Timber.d("onResume")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d("testapp splash", "onPause")
+        Timber.d("onPause")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d("testapp splash", "onStop")
+        Timber.d("onStop")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("testapp splash", "onDestroy")
+        Timber.d("onDestroy")
     }
 
     override fun onRestart() {
         super.onRestart()
-        Log.d("testapp splash", "onRestart")
+        Timber.d("onRestart")
     }
 
     fun goToMainActivity() {
